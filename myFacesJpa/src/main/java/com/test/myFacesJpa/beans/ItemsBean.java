@@ -32,7 +32,11 @@ public class ItemsBean implements Serializable {
 	}
 
 	private void update() {
+		if (getItems() != null) {
+			System.out.println("SIZE BEFORE: " + getItems().size());
+		}
 		setItems(itemDao.select());
+		System.out.println("SIZE AFTER: " + getItems().size());
 	}
 
 	@Transactional

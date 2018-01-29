@@ -23,8 +23,8 @@
 				<version>7.0.4</version>
 				<configuration>
 					<tomeeVersion>7.0.4</tomeeVersion>
-					<tomeeClassifier>plume</tomeeClassifier>
-					<!-- <tomeeClassifier>plus</tomeeClassifier> -->
+					<!-- <tomeeClassifier>plume</tomeeClassifier> -->
+					<tomeeClassifier>plus</tomeeClassifier>
 					<config>${project.basedir}/src/test/tomee/conf</config>
 					<libs>
 						<lib>mysql:mysql-connector-java:5.1.33</lib>
