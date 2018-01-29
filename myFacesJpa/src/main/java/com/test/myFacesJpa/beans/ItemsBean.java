@@ -49,6 +49,8 @@ public class ItemsBean implements Serializable {
 		item.setId(counter);
 		item.setName("ANOTHER ITEM");
 		items.add(item);
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Added item", null));
 		return null;
 	}
 
