@@ -1,14 +1,18 @@
 package com.test.myFacesJpa.beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
+import javax.transaction.Transactional;
 
+//import org.apache.deltaspike.jpa.api.transaction.Transactional;
+
+import com.test.myFacesJpa.dao.ItemDao;
 import com.test.myFacesJpa.entities.Item;
 
 @Named
@@ -16,41 +20,43 @@ import com.test.myFacesJpa.entities.Item;
 public class ItemsBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@Inject
+	private ItemDao itemDao;
+
 	private List<Item> items;
 	private Item item;
-	private int counter;
 
 	public String onload() {
-		initialise();
+		update();
 		return null;
 	}
 
-	private void initialise() {
-		items = new ArrayList<>();
+	private void update() {
+		setItems(itemDao.select());
 	}
 
+	@Transactional
 	public String deleteInfo() {
-		items.remove(getItem());
+		itemDao.delete(getItem());
+		update();
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_INFO, "Deleted item", null));
 		return null;
 	}
 
+	@Transactional
 	public String deleteError() {
-		items.remove(getItem());
+		itemDao.delete(getItem());
+		update();
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_ERROR, "Deleted item", null));
 		return null;
 	}
 
+	@Transactional
 	public String add() {
-		counter++;
-		Item item = new Item();
-		item.setId(counter);
-		item.setName("ANOTHER ITEM");
-		items.add(item);
-		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_INFO, "Added item", null));
+		itemDao.create();
+		update();
 		return null;
 	}
 

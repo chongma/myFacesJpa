@@ -23,7 +23,8 @@
 				<version>7.0.4</version>
 				<configuration>
 					<tomeeVersion>7.0.4</tomeeVersion>
-					<tomeeClassifier>plus</tomeeClassifier>
+					<tomeeClassifier>plume</tomeeClassifier>
+					<!-- <tomeeClassifier>plus</tomeeClassifier> -->
 					<config>${project.basedir}/src/test/tomee/conf</config>
 					<libs>
 						<lib>mysql:mysql-connector-java:5.1.33</lib>
@@ -45,6 +46,18 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.33</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.deltaspike.modules</groupId>
+			<artifactId>deltaspike-jpa-module-api</artifactId>
+			<version>1.8.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.deltaspike.modules</groupId>
+			<artifactId>deltaspike-jpa-module-impl</artifactId>
+			<version>1.8.0</version>
+			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
 </project>
