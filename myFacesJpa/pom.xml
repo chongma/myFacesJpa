@@ -46,17 +46,5 @@
 			<version>5.1.33</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.deltaspike.modules</groupId>
-			<artifactId>deltaspike-jpa-module-api</artifactId>
-			<version>1.8.0</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.deltaspike.modules</groupId>
-			<artifactId>deltaspike-jpa-module-impl</artifactId>
-			<version>1.8.0</version>
-			<scope>runtime</scope>
-		</dependency>
 	</dependencies>
 </project>

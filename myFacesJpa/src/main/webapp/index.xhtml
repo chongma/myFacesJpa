@@ -53,7 +53,14 @@
 			<ui:repeat var="item" value="#{itemsBean.items}">
 				<div>
 					<h:outputText value="#{item.id} #{item.name} " />
-					<h:commandButton value="delete" action="#{itemsBean.delete}">
+					<h:commandButton value="delete INFO"
+						action="#{itemsBean.deleteInfo}">
+						<f:setPropertyActionListener value="#{item}"
+							target="#{itemsBean.item}" />
+						<f:ajax render="@form" />
+					</h:commandButton>
+					<h:commandButton value="delete ERROR"
+						action="#{itemsBean.deleteError}">
 						<f:setPropertyActionListener value="#{item}"
 							target="#{itemsBean.item}" />
 						<f:ajax render="@form" />
